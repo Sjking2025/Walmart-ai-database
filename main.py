@@ -13,7 +13,7 @@ async def create_product(product: Product):
 
 @app.post("/users/")
 async def create_user(user: User):
-    result = await add_user(user)  # result is InsertOneResult
+    result = await add_user(user)
     return {"message": "User inserted", "user_id": str(result.inserted_id)}
 
 

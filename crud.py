@@ -2,13 +2,16 @@ from db import db
 from models import Product, User, Review, Return, Provider, Recommendation
 
 # -------- PRODUCT --------
+
 async def add_product(product: Product):
-    return await db.products.insert_one(product.dict())
+    result = await db.products.insert_one(product.dict())
+    return {"inserted_id": str(result.inserted_id)}
+
 
 # -------- USER --------
 async def add_user(user: User):
-    result = await db.users.insert_one(user.dict())
-    return {"inserted_id": str(result.inserted_id)}
+    return await db.users.insert_one(user.dict())  # Returns InsertOneResult
+
 
 
 # -------- REVIEW --------
