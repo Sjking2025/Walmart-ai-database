@@ -7,7 +7,9 @@ async def add_product(product: Product):
 
 # -------- USER --------
 async def add_user(user: User):
-    return await db.users.insert_one(user.dict())
+    result = await db.users.insert_one(user.dict())
+    return {"inserted_id": str(result.inserted_id)}
+
 
 # -------- REVIEW --------
 async def add_review(review: Review):

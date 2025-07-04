@@ -13,7 +13,9 @@ async def create_product(product: Product):
 
 @app.post("/users/")
 async def create_user(user: User):
-    return await add_user(user)
+    result = await add_user(user)  # result is InsertOneResult
+    return {"message": "User inserted", "user_id": str(result.inserted_id)}
+
 
 @app.post("/reviews/")
 async def create_review(review: Review):
